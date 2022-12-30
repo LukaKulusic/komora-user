@@ -16,10 +16,19 @@ class Biography extends React.Component {
     }
 
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            userDetails: nextProps.memberDetails
-        })
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({
+    //         userDetails: nextProps.memberDetails
+    //     })
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        if(nextProps.memberDetails !== prevProps.userDetails) {
+            return {
+                userDetails: nextProps.memberDetails
+            }
+        }
+        return null
     }
 
   

@@ -22,6 +22,35 @@ export function getMembers_failure(error) {
     }
 }
 
+
+
+//
+//search per city
+//
+export function getMembersPerCity_request(members) {
+    return {
+        type: memberConstant.SEARCH_PER_CITY_REQUEST,
+        payload: members
+    }
+}
+export function getMembersPerCity_success(members) {
+    return {
+        type: memberConstant.SEARCH_PER_CITY_SUCCESS,
+        payload: members
+    }
+}
+export function getMembersPerCity_failure(error) {
+    return {
+        type: memberConstant.SEARCH_PER_CITY_FAILURE,
+        payload: error
+    }
+}
+//
+//
+//
+
+
+
 export function getBoardMembers_request(members) {
     return {
         type: memberConstant.GETBOARDMEMBERS_REQUEST,
@@ -174,3 +203,24 @@ export function getMembersNorth_failure(error) {
         payload: error
     }
 }
+
+//actions for cites
+export function getCities_request(cities){
+    return {
+        type: memberConstant.GETCITIES_REQUEST,
+        payload: cities
+    }
+}
+export function getCities_success(cities){
+    return {
+        type: memberConstant.GETCITIES_SUCCESS,
+        payload: cities
+    }
+}
+export function getCities_failure(error){
+    return {
+        type: memberConstant.GETCITIES_FAILURE,
+        payload: error
+    }
+}
+//end

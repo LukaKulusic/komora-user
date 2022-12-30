@@ -104,3 +104,22 @@ export function getPopularNews_failure(error) {
         payload: error
     }
 }
+
+export function getLastNew_request(last) {
+    return {
+        type: newsConstants.GETLASTNEW_REQUEST,
+        payload: last
+    }
+}
+export function getLastNew_success(last) {
+    return {
+        type: newsConstants.GETLASTNEW_SUCCESS,
+        payload: last
+    }
+}
+export function getLastNew_failure(error) {
+    return {
+        type: newsConstants.GETLASTNEW_FAILURE,
+        payload: error
+    }
+}

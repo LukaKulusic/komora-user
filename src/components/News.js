@@ -1,10 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import PageHeader from './singleComponents/PageHeader';
 import Category from './singleComponents/Category';
 import Novelty from './singleComponents/Novelty';
 import PopularNews from './singleComponents/PopularNews';
 import Pagination from 'react-js-pagination'
+import NewsHeader from './singleComponents/NewsHeader';
 
 
 class News extends React.Component {
@@ -25,21 +25,59 @@ class News extends React.Component {
 
     componentDidMount() {
         this.setup()
+
     }
 
-    componentWillReceiveProps(nextProps) {
-        let pagNews = []
-        if(nextProps.news.length > 0) {
-            pagNews = nextProps.news.slice(this.state.activePage*this.state.newsPerPage - this.state.newsPerPage,
-                this.state.activePage*this.state.newsPerPage, [])
+    // componentWillReceiveProps(nextProps) {
+    //     let pagNews = []
+    //     if(nextProps.news.length > 0) {
+    //         pagNews = nextProps.news.slice(this.state.activePage*this.state.newsPerPage - this.state.newsPerPage,
+    //             this.state.activePage*this.state.newsPerPage, [])
+    //     }
+    //     this.setState({
+    //         popularNews: nextProps.popularNews,
+    //         categories: nextProps.categories,
+    //         news: nextProps.news,
+    //         data: pagNews,
+    //         totalAdvs: nextProps.news.length
+    //     })
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        let _pagNews = [], _categories, _popularNews, _news, _newsLength
+        if(nextProps.news !== prevProps.news) {
+            _pagNews = nextProps.news.slice(prevProps.activePage*prevProps.newsPerPage - prevProps.newsPerPage,
+                prevProps.activePage*prevProps.newsPerPage, [])
+            _categories = nextProps.categories
+            _popularNews = nextProps.popularNews
+            _news = nextProps.news
+            _newsLength = nextProps.news.length
         }
-        this.setState({
-            popularNews: nextProps.popularNews,
-            categories: nextProps.categories,
-            news: nextProps.news,
-            data: pagNews,
-            totalAdvs: nextProps.news.length
-        })
+        if(nextProps.categories !== prevProps.categories) {
+            _categories = nextProps.categories
+            _pagNews = nextProps.news.slice(prevProps.activePage*prevProps.newsPerPage - prevProps.newsPerPage,
+                prevProps.activePage*prevProps.newsPerPage, [])
+            _categories = nextProps.categories
+            _popularNews = nextProps.popularNews
+            _news = nextProps.news
+            _newsLength = nextProps.news.length
+        }
+        if(nextProps.news === prevProps.news && nextProps.categories === prevProps.categories) {
+            _categories = nextProps.categories
+            _pagNews = nextProps.news.slice(prevProps.activePage*prevProps.newsPerPage - prevProps.newsPerPage,
+                prevProps.activePage*prevProps.newsPerPage, [])
+            _categories = nextProps.categories
+            _popularNews = nextProps.popularNews
+            _news = nextProps.news
+            _newsLength = nextProps.news.length
+        }
+        return {
+            popularNews: _popularNews,
+            categories: _categories,
+            news: _news,
+            data: _pagNews,
+            totalAdvs: _newsLength
+        }
     }
 
     setActivePage = (currentPage) => {
@@ -59,7 +97,7 @@ class News extends React.Component {
     render() {
         return (
             <div>
-                <PageHeader />
+                <NewsHeader />
                 <div className="contain-wrapp padding-bot50">	
 		            <div className="container">
 			            <div className="row">
@@ -69,6 +107,7 @@ class News extends React.Component {
                                         <h5 className="widget-head">Kategorije</h5>
                                         <ul className="cat">
                                             {
+                                                this.state.categories !== undefined ?
                                                 this.state.categories.map(category => {
                                                     return <Category 
                                                         key={category.id}
@@ -76,6 +115,7 @@ class News extends React.Component {
                                                         name={category.name}
                                                         />
                                                 })
+                                                : ""
                                             }
                                         </ul>
                                     </div>
@@ -83,6 +123,7 @@ class News extends React.Component {
                                         <h5 className="widget-head">Popularni članci</h5>
                                         <div className="recent-widget">
                                             {
+                                                this.state.popularNews !== undefined ?
                                                 this.state.popularNews.map(news => {
                                                     return <PopularNews
                                                         key={news.id}
@@ -90,20 +131,21 @@ class News extends React.Component {
                                                         title={news.title}
                                                      />
                                                 })
+                                                : ""
                                             }
                                         </div>
                                     </div>
                                     <div className="widget">
                                         <h5 className="widget-head">Pratite nas</h5>
-                                        <a href="#1" className="btn btn-facebook btn-icon btn-block">Facebook <i className="fa fa-facebook"></i></a>
-                                        <a href="#2" className="btn btn-twitter btn-icon btn-block">Twitter <i className="fa fa-twitter"></i></a>
-                                        <a href="#6" className="btn btn-instagram btn-icon btn-block">Instagram <i className="fa fa-instagram"></i></a>
+                                        <a href="https://www.facebook.com/MNEdentalchamber/" className="btn btn-facebook btn-icon btn-block">Facebook <i className="fa fa-facebook"></i></a>
+                                        <a href="https://www.instagram.com/stomatoloskakomoracg/" className="btn btn-instagram btn-icon btn-block">Instagram <i className="fa fa-instagram"></i></a>
                                     </div>
                                 </aside>
                             </div>
 
                             <div className="col-md-9 col-sm-9">
                                 {
+                                    this.state.data !== undefined ?
                                     this.state.data.map(item => {
                                         return <Novelty 
                                             key={item.id}
@@ -115,6 +157,7 @@ class News extends React.Component {
                                             content={item.content}
                                         />
                                     })
+                                    : ""
                                 }
                                 <Pagination
                                     activePage={this.state.activePage}

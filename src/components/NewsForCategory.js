@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import PageHeader from '../components/singleComponents/PageHeader'
 import Novelty from './singleComponents/Novelty';
 import Category from './singleComponents/Category';
+import Pagination from 'react-js-pagination'
 
 class NewsForCategory extends React.Component {
 
@@ -10,7 +11,13 @@ class NewsForCategory extends React.Component {
         super(props)
         this.state = {
             news: [],
-            categories: []
+            categories: [],
+            activePage: 1,
+            newsPerPage: 5,
+            numberOfPagButton: 5,
+            totalAdvs: 0,
+            data: [],
+            selectedCategory: ''
         }
     }
 
@@ -18,10 +25,57 @@ class NewsForCategory extends React.Component {
         this.setup()
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+    // componentWillReceiveProps(nextProps) {
+    //     let pagNews = []
+    //     let category_id 
+    //     let selCat 
+    //     if(nextProps.categories.length > 0)  {
+    //         category_id = parseInt(nextProps.category.id)
+    //         selCat = nextProps.categories[category_id-1].name
+    //     }
+    //     if(nextProps.news.length > 0) {
+    //         pagNews = nextProps.news.slice(this.state.activePage*this.state.newsPerPage - this.state.newsPerPage,
+    //             this.state.activePage*this.state.newsPerPage, [])
+    //     }
+    //     this.setState({
+    //         news: nextProps.news,
+    //         categories: nextProps.categories,
+    //         data: pagNews,
+    //         totalAdvs: nextProps.news.length,
+    //         selectedCategory: selCat
+    //     })
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        let pagNews = [], category_id, selCat
+        if(nextProps.categories !== prevProps.categories) {
+            category_id = parseInt(nextProps.category.id)
+            if(nextProps.categories !== undefined) {
+                if(nextProps.categories.length > 0) {
+                    selCat = nextProps.categories[category_id-1].name
+                }
+            }
+            pagNews = nextProps.news.slice(prevProps.activePage*prevProps.newsPerPage - prevProps.newsPerPage,
+                prevProps.activePage*prevProps.newsPerPage, [])
+        }
+        if(nextProps.news !== prevProps.news) {
+            pagNews = nextProps.news.slice(prevProps.activePage*prevProps.newsPerPage - prevProps.newsPerPage,
+                prevProps.activePage*prevProps.newsPerPage, [])
+        }
+        return {
             news: nextProps.news,
-            categories: nextProps.categories
+            categories: nextProps.categories,
+            data: pagNews,
+            totalAdvs: nextProps.news.length,
+            selectedCategory: selCat
+        }
+    }
+
+    setActivePage = (currentPage) => {
+        this.setState({
+            activePage: currentPage,
+            data: this.state.news.slice(currentPage*this.state.newsPerPage - this.state.newsPerPage,
+                currentPage*this.state.newsPerPage, [])
         })
     }
 
@@ -34,10 +88,10 @@ class NewsForCategory extends React.Component {
         return (
             <div>
                 <PageHeader />
-                <div className="contain-wrapp padding-bot50">	
+                <div className="contain-wrapp padding-bot50" style={{marginTop: '30px'}}>	
 		            <div className="container">
 			            <div className="row">
-                            <div className="col-md-3 col-sm-3">
+                            {/* <div className="col-md-3 col-sm-3">
                                 <aside>
                                     <div className="widget">
                                         <h5 className="widget-head">Kategorije</h5>
@@ -54,10 +108,14 @@ class NewsForCategory extends React.Component {
                                         </ul>
                                     </div>
                                 </aside>
-                            </div>
-                            <div className="col-md-9 col-sm-9">
+                            </div> */}
+                            <div className="col-md-9 col-md-offset-3 col-sm-12">
+                                <div className="newsForCat">
+                                    <h5>Vijesti za kategoriju: {this.state.selectedCategory} </h5>
+                                </div>
+
                             {
-                                this.state.news.map(item => {
+                                this.state.data.map(item => {
                                     return <Novelty 
                                                 key={item.id}
                                                 id={item.id}
@@ -72,17 +130,13 @@ class NewsForCategory extends React.Component {
                                 })
                             }
                             
-                                <nav>
-                                    <ul className="pagination">
-                                        {/* <li className="disabled"><a href="#1" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> */}
-                                        <li className="active"><a href="#1">1</a></li>
-                                        <li><a href="#1">2</a></li>
-                                        <li><a href="#2">3</a></li>
-                                        <li><a href="#3">4</a></li>
-                                        <li><a href="#4">5</a></li>
-                                        {/* <li><a href="#5" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> */}
-                                    </ul>
-                                </nav>
+                                <Pagination
+                                    activePage={this.state.activePage}
+                                    itemsCountPerPage={this.state.newsPerPage}
+                                    totalItemsCount={this.state.totalAdvs}
+                                    pageRangeDisplayed={this.state.numberOfPagButton}
+                                    onChange={this.setActivePage}
+                                />
                             </div>
                         </div>
                     </div>

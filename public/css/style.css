@@ -91,7 +91,8 @@ Container
 =========================== */
 .contain-wrapp{
 	position:relative;
-	padding:80px 0;
+	padding:30px 0;
+	/* padding:80px 0; */
 }
 
 .gray-container{
@@ -1000,6 +1001,9 @@ Inner head
 	border-bottom:1px solid #eaeaea;
 }
 
+.pravni-akti {
+	background-image:url(../img/pravni-akti.jpg);
+}
 .inner-head i{
 	width:47px;
 	height:47px;
@@ -1026,6 +1030,143 @@ Inner head
 .inner-head .breadcrumb {
 	margin-bottom:0;
 }
+
+.patterns:hover {
+	cursor: pointer;
+}
+.rest:hover {
+	cursor: default;
+}
+
+.akti-head{
+	position:relative;
+	display:block;
+	width:100%;
+	background-color: rgba(248,248,248,1);
+	background-color: -moz-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,248,248,1)), color-stop(100%, rgba(243,243,243,1)));
+	background-color: -webkit-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -o-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -ms-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: linear-gradient(to bottom, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#f3f3f3', GradientType=0 );
+	background-image:url(../img/pravni-akit2.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	padding:60px 0;
+	margin-bottom:0;
+	text-align:center;
+	border-bottom:1px solid #eaeaea;
+}
+
+.akti-head i{
+	width:47px;
+	height:47px;
+	margin:7px 20px 0 0;
+	border:2px solid #fff;
+	text-align:center;
+	overflow:hidden;
+	font-size:24px;
+	line-height:42px;
+	border-radius:2px;
+}
+
+
+.activity-head{
+	position:relative;
+	display:block;
+	width:100%;
+	background-color: rgba(248,248,248,1);
+	background-color: -moz-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,248,248,1)), color-stop(100%, rgba(243,243,243,1)));
+	background-color: -webkit-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -o-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -ms-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: linear-gradient(to bottom, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#f3f3f3', GradientType=0 );
+	background-image:url(../img/bilteni.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	padding:60px 0;
+	margin-bottom:0;
+	text-align:center;
+	border-bottom:1px solid #eaeaea;
+}
+
+.activity-head i{
+	width:47px;
+	height:47px;
+	margin:7px 20px 0 0;
+	border:2px solid #fff;
+	text-align:center;
+	overflow:hidden;
+	font-size:24px;
+	line-height:42px;
+	border-radius:2px;
+}
+
+
+.news-head{
+	position:relative;
+	display:block;
+	width:100%;
+	background-color: rgba(248,248,248,1);
+	background-color: -moz-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248,248,248,1)), color-stop(100%, rgba(243,243,243,1)));
+	background-color: -webkit-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -o-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: -ms-linear-gradient(top, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	background-color: linear-gradient(to bottom, rgba(248,248,248,1) 0%, rgba(243,243,243,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#f3f3f3', GradientType=0 );
+	background-image:url(../img/newsBanner.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	padding:60px 0;
+	margin-bottom:0;
+	text-align:center;
+	border-bottom:1px solid #eaeaea;
+}
+
+.news-head i{
+	width:47px;
+	height:47px;
+	margin:7px 20px 0 0;
+	border:2px solid #fff;
+	text-align:center;
+	overflow:hidden;
+	font-size:24px;
+	line-height:42px;
+	border-radius:2px;
+}
+/* .inner-head h1, .inner-head  h2, .inner-head  h3, .inner-head  h4 , .inner-head  h5, .inner-head  h6{
+	font-size:48px;
+	line-height:56px;
+	text-transform:uppercase;
+	margin-bottom:15px;
+}
+
+.inner-head h1 span, .inner-head  h2 span, .inner-head  h3 span, .inner-head  h4 span, .inner-head  h5 span, .inner-head  h6 span{
+	font-weight:300;
+}
+
+.inner-head .breadcrumb {
+	margin-bottom:0;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 Call to action
@@ -2559,10 +2700,24 @@ article.post{
 }
 
 article.post.row{
-	margin-bottom:40px;
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* margin-bottom:40px; */
 }
 
 .grid-item article.post{
+		/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
+	/* removed */
 	margin-bottom:10px;
 }
 
@@ -6602,3 +6757,14 @@ a.openpanel:hover{
 	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
 }
+
+.searchF:hover {
+	border: 1px solid red;
+}
+
+.detailsBnt {
+	background-color: "#EEEEEE";
+	margin-top: 5px;
+	padding: 10px;
+	border-radius: 5px;
+  }

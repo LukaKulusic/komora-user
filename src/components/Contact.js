@@ -7,7 +7,10 @@ class Contact extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			details: []
+			details: [],
+			name: '',
+			email: '',
+			message: ''
 		}
 	}
 
@@ -15,14 +18,47 @@ class Contact extends React.Component {
 		this.setup()
 	}
 
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			details: nextProps.details
-		})
+	// componentWillReceiveProps(nextProps) {
+	// 	this.setState({
+	// 		details: nextProps.details
+	// 	})
+	// }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+		if(nextProps.details !== prevProps.details) {
+			return {
+				details: nextProps.details
+			}
+		}
+		return null
 	}
 
 	setup = () => {
 		this.props.getDetails()
+	}
+
+	changeName = (input) => {
+		this.setState({name: input.target.value})
+	}
+
+	changeEmail = (input) => {
+		this.setState({email: input.target.value})
+	}
+
+	changeMessage = (input) => {
+		this.setState({message: input.target.value})
+	}
+
+	sendEmail = (e) => {
+		e.preventDefault();
+
+		let email = {
+			name: this.state.name,
+			email: this.state.email,
+			message: this.state.message
+		}
+		//todo
+		this.props.sendEmail(email)
 	}
 
     render(){
@@ -40,23 +76,23 @@ class Contact extends React.Component {
                         </div>
 				<div className="row">
 					<div className="col-md-8 col-sm-7">
-						<form method="post" id="mycontactform">
+						<form onSubmit={this.sendEmail}>
 							<div className="clearfix"></div>
 							<div id="success"></div>
 							<div className="row wrap-form">
 								<div className="form-group col-md-6 col-sm-6">
 									<h6>Ime i prezime</h6>
-									<input type="text" name="name" id="name" className="form-control input-lg required" placeholder="Unesite ime i prezime..."></input>
+									<input type="text" value={this.state.name} onChange={this.changeName} name="name" id="name" className="form-control input-lg required" placeholder="Unesite ime i prezime..."></input>
 									<span data-for="name" className="error"></span>
 								</div>
 								<div className="form-group col-md-6 col-sm-6">
 									<h6>Email</h6>
-									<input type="email" name="email" id="email" className="form-control input-lg required" placeholder="Unesite Vašu email adresu..."></input>
+									<input type="email" value={this.state.email} onChange={this.changeEmail} name="email" id="email" className="form-control input-lg required" placeholder="Unesite Vašu email adresu..."></input>
 									<span data-for="email" className="error"></span>
 								</div>
 								<div className="form-group col-md-12">
 									<h6>Vaša poruka</h6>
-									<textarea name="message" id="message" className="form-control input-lg required" placeholder="Poruka..." rows="9"></textarea>
+									<textarea name="message" value={this.state.message} onChange={this.changeMessage} id="message" className="form-control input-lg required" placeholder="Poruka..." rows="9"></textarea>
 									<span data-for="message" className="error"></span>
 								</div>
 								<div className="form-group col-md-12">

@@ -1,7 +1,9 @@
 import { takeEvery, put, call} from 'redux-saga/effects'
-import { getMembers_failure, getMembers_success, getBoardMembers_failure, getBoardMembers_success, getBiography_failure, getBiography_success, getMembersCt_failure, getMembersCt_success, getMembersPg_failure, getMembersPg_success, getMembersNk_failure, getMemberNk_success, getMembersSouth_failure, getMembersSouth_success, getMembersNorth_failure, getMembersNorth_success } from '../actions/member.actions'
+import { getMembers_failure, getMembers_success, getBoardMembers_failure, getBoardMembers_success, getBiography_failure, getBiography_success, getMembersCt_failure, getMembersCt_success, getMembersPg_failure, getMembersPg_success, getMembersNk_failure, getMemberNk_success, getMembersSouth_failure, getMembersSouth_success, getMembersNorth_failure, getMembersNorth_success, getCities_failure, getCities_success, getMembersPerCity_request, getMembersPerCity_success } from '../actions/member.actions'
 import  { memberConstant } from '../constants/member.constants'
-import { getMembers_api, getBoardMembers_api, getBiography_api, getMembersCt_api, getMembersPg_api, getMembersNk_api, getMembersSouth_api, getMembersNorth_api } from '../api/members.api'
+import { getMembers_api, getBoardMembers_api, getBiography_api, getMembersCt_api, getMembersPg_api, getMembersNk_api, getMembersSouth_api, getCities_api, getMembersNorth_api, addParticipans_api, getMembersPerCity_api } from '../api/members.api'
+import { addParticipans_failure, addParticipans_request, addParticipans_success } from '../actions/congress.action'
+import { congressConstants } from '../constants/congress.constants'
 
 export function* getMembers() {
     const response = yield call(getMembers_api)
@@ -100,8 +102,47 @@ export function* getMembersNorth() {
     }
 }
 
+
+export function* getCities() {
+    console.log('api for cities')
+    const response = yield call(getCities_api)
+    if(!response || !response.data) {
+        return yield put(getCities_failure('Internal server error for loading memners from north'))
+    }    
+    if(response.status === 200) {
+        return yield put(getCities_success(response.data))
+    } else {
+        return yield put(getCities_failure('Error for loading memners from north'))
+    }
+}
+
+export function* getMembersPerCity(action) {
+    const response = yield call(getMembersPerCity_api, action.payload)
+    if(!response || !response.data) {
+        return yield put(getMembersPerCity_request('Internal server error for add member'))
+    }
+    if(response.status === 200) {
+        return yield put(getMembersPerCity_success(response.data))
+    } else {
+        return yield put(getMembersPerCity_request('Error for add member'))
+    }
+}
+
+export function* addParticipans(action) {
+    const response = yield call(addParticipans_api, action.payload)
+    if(!response || !response.data) {
+        return yield put(addParticipans_failure('Internal server error for add member'))
+    }
+    if(response.status === 200) {
+        return yield put(addParticipans_success(response.data))
+    } else {
+        return yield put(addParticipans_failure('Error for add member'))
+    }
+}
+
 export function* memberSaga() {
     yield takeEvery(memberConstant.GETMEMBERS_REQUEST, getMembers)
+    yield takeEvery(memberConstant.SEARCH_PER_CITY_REQUEST, getMembersPerCity)
     yield takeEvery(memberConstant.GETBOARDMEMBERS_REQUEST, getBoardMembers)
     yield takeEvery(memberConstant.GETBIOGRAPHY_REQUEST, getBiography)
     yield takeEvery(memberConstant.GETMEMBERSCT_REQUEST, getMembersCt)
@@ -109,4 +150,6 @@ export function* memberSaga() {
     yield takeEvery(memberConstant.GETMEMBERSNK_REQUEST, getMembersNk)
     yield takeEvery(memberConstant.GETMEMBERSSOUTH_REQUEST, getMembersSouth)
     yield takeEvery(memberConstant.GETMEMBERSNORTH_REQUEST, getMembersNorth)
+    yield takeEvery(memberConstant.GETCITIES_REQUEST, getCities)
+    yield takeEvery(congressConstants.ADDPARTICIPANS_REQUEST, addParticipans)
 }

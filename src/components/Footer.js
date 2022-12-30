@@ -1,5 +1,5 @@
 import React from 'react'
-import NforFooter from './singleComponents/NforFooter';
+// import NforFooter from './singleComponents/NforFooter';
 
 export default class Footer extends React.Component {
 
@@ -15,11 +15,24 @@ export default class Footer extends React.Component {
         this.setup()
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            details: nextProps.details,
-            news: nextProps.news
-        })
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({
+    //         details: nextProps.details,
+    //         news: nextProps.news
+    //     })
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        let _details = [], _news = []
+        if(nextProps.details !== prevProps.details) {
+            _details = nextProps.details
+            _news = nextProps.news
+            return {
+                details: _details,
+                news: _news
+            } 
+        }
+        return null
     }
 
     setup = () => {
@@ -30,66 +43,118 @@ export default class Footer extends React.Component {
     render() {
         return (
             <div>
-                <footer>
-                    <div className="container">
+                <footer style={{backgroundColor: "#fafafa", color: 'black'}}>
+                    <div className="container" style={{color: 'black'}}>
                         <div className="row">
-                            <div className="col-md-4 col-sm-4">
+                            <div className="col-md-4 col-sm-4 col-lg-4">
                                 <div className="widget">
-                                    <h5>Društvene mreže</h5>
-                                    <img src="logo.png" className="marginbot15" style={{'height':'100px'}} alt="" />
+                                    <div className="col-md-4 col-sm-4 col-lg-4">
+                                        <img src="logo-red.png" className="marginbot15" style={{'height':'100px'}} alt="" />
+                                    </div>
+                                    <div className="col-md-8 col-sm-8 col-lg-8">
+                                        <h6 style={{color: 'black'}}>Društvene mreže</h6>
+                                        <p style={{paddingBottom: '10px', fontSize:'14px'}}>
+                                            Sve aktuelnosti vezane za komoru možete pratiti na našim nalozima na društvenim mrežama.
+                                        </p>
+                                        <a href="https://www.facebook.com/MNEdentalchamber/?modal=admin_todo_tour"><i className="fa fa-facebook fa-2x icon-square" style={{marginRight: '2px'}}></i></a>
+                                        <a href="https://www.instagram.com/stomatoloskakomoracg/"><i className="fa fa-instagram fa-2x icon-square"></i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <div className="col-md-4 col-sm-4 col-lg-4">
+                                <div className="widget">
+                                    <h6 a href="http://stomkomcg.me/StatutSKCG.pdf" style={{paddingBottom:'10px', color: 'black'}}>Vezani linkovi</h6>
+                                    <ul className="recent-post">
+                                        <li>
+                                            <p style={{fontSize:'14px'}}><a href="https://www.gov.me/cyr/mzd" target="_blank" style={{color: 'black'}}>Ministarstvo zdravlja</a></p>
+                                        </li>
+                                        <li>
+                                            <p style={{fontSize:'14px'}}><a href="https://fzocg.me" target="_blank" style={{color: 'black'}}>Font za zdravstveno osiguranje Crne Gore</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="col-md-4 col-sm-4 col-lg-4">
+                                <div className="widget">
+                                    <h6 style={{color: 'black'}}>Kontakt</h6>
+                                    <div className="tweet" style={{color: 'black'}}>
+                                        <p style={{color: 'black'}}>Adresa: {this.state.details.address || ""} , {this.state.details.city || ""}</p>
+                                        <p>Tel1: {this.state.details.phone1 || ""} </p>
+                                        <p>Tel2: {this.state.details.phone2 || ""} </p>
+                                        <p>E-mail: {this.state.details.email || ""}</p>
+                                        <p>Radno vrijeme: {this.state.details.work_time || ""} </p>
+                                        <p>Br.žiro računa: { this.state.details.bank_account || ""} </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* <div className="col-md-3 col-sm-4">
+                                <div className="widget">
+                                    <img src="logo-red.png" className="marginbot15" style={{'height':'100px'}} alt="" />
+                                    <h6>Društvene mreže</h6>
                                     <p>
                                         Sve aktuelnosti vezane za komoru možete pratiti na našim nalozima na društvenim mrežama.
                                     </p>
-                                    <a href="#1"><i className="fa fa-facebook fa-2x icon-square"></i></a>
-                                    <a href="#2"><i className="fa fa-twitter fa-2x icon-square"></i></a>
-                                    <a href="#3"><i className="fa fa-google-plus fa-2x icon-square"></i></a>
-                                    <a href="#4"><i className="fa fa-instagram fa-2x icon-square"></i></a>
-                                    <a href="#5"><i className="fa fa-linkedin fa-2x icon-square"></i></a>
+                                    <a href="https://www.facebook.com/MNEdentalchamber/?modal=admin_todo_tour"><i className="fa fa-facebook fa-2x icon-square"></i></a>
+                                    <a href="https://www.instagram.com/stomatoloskakomoracg/"><i className="fa fa-instagram fa-2x icon-square"></i></a>
                                 </div>
-                            </div>
-                            <div className="col-md-2 col-sm-2">
+                            </div> */}
+                            {/* <div className="col-md-3 col-sm-3">
                                 <div className="widget">
-                                    <h5>Linkovi</h5>
-                                    <ul className="list-icons link-list">
-                                        <li><i className="fa fa-angle-double-right"></i> <a href="pocetna">Početna</a></li>
-                                        <li><i className="fa fa-angle-double-right"></i> <a href="onama">O nama</a></li>
-                                        <li><i className="fa fa-angle-double-right"></i> <a href="vijesti">Vijesti</a></li>
-                                        <li><i className="fa fa-angle-double-right"></i> <a href="clanovi">Članovi komore</a></li>
-                                        <li><i className="fa fa-angle-double-right"></i> <a href="oglasi">Oglasi</a></li>
-                                        <li><i className="fa fa-angle-double-right"></i> <a href="kontakt">Kontakt</a></li>
+                                    <h5>Bilteni komore</h5>
+                                    <ul className="recent-post">
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten1.pdf">Bilten br.1</a></h6>
+                                        </li>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten2.pdf">Bilten br.2</a></h6>
+                                        </li>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten3.pdf">Bilten br.3</a></h6>
+                                        </li>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten4.pdf">Bilten br.4</a></h6>
+                                        </li>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten5.pdf">Bilten br.5</a></h6>
+                                        </li>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten6.pdf">Bilten br.6</a></h6>
+                                        </li>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://www.stomkomcg.me/Bilten7.pdf">Bilten br.7</a></h6>
+                                        </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
+                            
+                            {/* 
                             <div className="col-md-3 col-sm-3">
                                 <div className="widget">
-                                    <h5>Vijesti</h5>
+                                    <h5 a href="http://stomkomcg.me/StatutSKCG.pdf">Dokumenta</h5>
                                     <ul className="recent-post">
-                                        {
-                                            this.state.news.map(n => {
-                                                return <NforFooter 
-                                                    key={n.id}
-                                                    id={n.id}
-                                                    title={n.title}
-                                                />
-                                            })
-                                        }
-
-                                        {/* <li>
-                                            <i className="fa fa-file-image-o post-data"></i>
-                                            <h6><a href="#3123">Kongres1</a></h6>
+                                        <li>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="http://stomkomcg.me/StatutSKCG.pdf">Statut komore</a></h6>
                                         </li>
                                         <li>
-                                            <i className="fa fa-file-video-o post-data"></i>
-                                            <h6><a href="#3213">Kongres2</a></h6>
+                                            <i className="fa fa-file-image-o post-data marginIcon"></i>
+                                            <h6><a href="https://stomkomcg.me/static/CCF_000008.pdf">Pravilnik o izboru i opozivu članova skupštine</a></h6>
                                         </li>
-                                        <li>
-                                            <i className="fa fa-file-text-o post-data"></i>
-                                            <h6><a href="#213">Kongres3</a></h6>
-                                        </li> */}
                                     </ul>
                                 </div>
-                            </div>
-            				<div className="col-md-3 col-sm-3">
+                            </div> */}
+
+            				{/* <div className="col-md-3 col-sm-3">
                                 <div className="widget">
                                     <h5>Kontakt</h5>
                                     <div className="tweet">
@@ -101,12 +166,9 @@ export default class Footer extends React.Component {
                                         <p>Br.žiro računa: { this.state.details.bank_account || ""} </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
-                    {/* <div className="subfooter">
-                        <p>2019 &copy; Copyright All rights Reserved.</p>
-                    </div> */}
                 </footer>
             </div>
         )

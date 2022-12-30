@@ -1,6 +1,9 @@
 import axios from 'axios'
 
+// var apiUrl = window.location.href.indexOf('stomkomcg.me') >= 0 ? 'https://laravel.stomkomcg.me' : 'http://api.zk.test';
+
+var apiUrl = "https://laravel.stomkomcg.me"
+
 export function getCategories_api() {
-    return axios.get('http://api.zk.test/category')
-    // return axios.get('http://www.mocky.io/v2/5d42920a3200006a007640c2')
+    return axios.get(apiUrl + '/category')
 }

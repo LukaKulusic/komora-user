@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+// var apiUrl = window.location.href.indexOf('stomkomcg.me') >= 0 ? 'https://laravel.stomkomcg.me' : 'http://api.zk.test';
+
+var apiUrl = "https://laravel.stomkomcg.me"
+
 export function getAdvertisments_api() {
-    return axios.get('http://api.zk.test/advertisments')
-    // return axios.get('http://localhost/zk/article.json')
-    // return axios.get('http://www.mocky.io/v2/5d453720300000e931c5c7fc')
+    return axios.get(apiUrl + '/advertisments')
 }

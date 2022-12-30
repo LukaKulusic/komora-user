@@ -23,7 +23,7 @@ class BoardMember extends React.Component {
                     </ul>
                 </div>
                 <div className="team-column">
-                    <img src="img/team1.jpg" className="img-responsive" alt="" />
+                    <img src={`img/${this.props.id}.jpg`} className="img-responsive" alt="" />
                 </div>
             </div>
         )

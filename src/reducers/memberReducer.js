@@ -1,3 +1,4 @@
+import { congressConstants } from '../constants/congress.constants'
 import { memberConstant } from '../constants/member.constants'
 
 const initialState = {
@@ -8,7 +9,9 @@ const initialState = {
     membersNk: [],
     membersCt: [],
     membersSouth: [],
-    membersNorth: []
+    membersNorth: [],
+    cities: [],
+    addParticipansMsg: ""
 }
 
 
@@ -31,6 +34,28 @@ export default function memberReducer(state = initialState, action) {
                 loading: false,
                 error: action.payload
             }
+        //
+        //
+        case memberConstant.SEARCH_PER_CITY_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
+        case memberConstant.SEARCH_PER_CITY_SUCCESS:
+            console.log('payload = ', action.payload)
+            return {
+                ...state,
+                loading: false,
+                members: action.payload
+            }
+        case memberConstant.SEARCH_PER_CITY_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        //
+        //
         case memberConstant.GETBOARDMEMBERS_REQUEST:
             return {
                 ...state,
@@ -160,7 +185,48 @@ export default function memberReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 error: action.payload
-            }    
+            }  
+        //actions for get cities
+        case memberConstant.GETCITIES_FAILURE:
+            return {
+                ...state,
+                loading: true
+            }
+        case memberConstant.GETCITIES_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                cities: action.payload
+            }
+        case memberConstant.GETCITIES_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+
+
+
+        case congressConstants.ADDPARTICIPANS_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                addParticipansMsg: ""
+            }
+        case congressConstants.ADDPARTICIPANS_SUCCESS:
+            localStorage.setItem('prijava', true)
+            return {
+                ...state,
+                loading: false,
+                addParticipansMsg: action.payload
+            }
+        case congressConstants.ADDPARTICIPANS_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                addParticipansMsg: "",
+            }
         default:
             return state
     }

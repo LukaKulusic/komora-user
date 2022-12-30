@@ -5,7 +5,7 @@ export default class Header extends React.Component {
     render () {
         return (
             <div>
-                <div className="top-wrapp">
+                {/* <div className="top-wrapp">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
@@ -21,7 +21,7 @@ export default class Header extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 
                 <div className="clearfix"></div>  
                             
@@ -33,7 +33,7 @@ export default class Header extends React.Component {
                             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                                 <i className="fa fa-bars"></i>
                             </button>
-                            <a className="navbar-brand" href="#brand"><img src="logo.png" className="logo" alt="logo" /></a>
+                            <a className="navbar-brand" href="#brand"><img src="logo-red.png" className="logo" alt="logo" /></a>
                         </div>
                         {/* ends header navigation */}
 
@@ -42,10 +42,14 @@ export default class Header extends React.Component {
                             <ul className="nav navbar-nav">
                                 <li><NavLink to="/pocetna">POČETNA</NavLink></li>
                                 <li><NavLink to="/onama">O NAMA</NavLink></li>
+                                {/* <li><NavLink to="/izbori">IZBORI</NavLink></li> */}
+                                <li><NavLink to="/kongres">KONGRES</NavLink></li>
+                                {/* <li><NavLink to="/organi_komore">ORGANI KOMORE</NavLink></li> */}
                                 <li><NavLink to="/vijesti">VIJESTI</NavLink></li>
-                                <li><NavLink to="/clanovi">ČLANOVI KOMORE</NavLink></li>
-                                <li><NavLink to="/oglasi">OGLASI</NavLink></li>
+                                {/* <li><NavLink to="/clanovi">ČLANOVI KOMORE</NavLink></li> */}
+                                {/* <li><NavLink to="/oglasi">OGLASI</NavLink></li> */}
                                 <li><NavLink to="/kontakt">KONTAKT</NavLink></li>
+                                <li><a href="https://skcg.ema.health/access/login">PRIJAVA</a></li>
                             </ul>
                         </div>
                     </div>

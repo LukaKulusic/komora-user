@@ -12,6 +12,13 @@ import AdvertismentCnt from './containers/AdvertismentCnt';
 import FooterCnt from './containers/FooterCnt';
 import MembersCnt from './containers/MembersCnt';
 import HomePageCnt from './containers/HomePageCnt';
+import AktiCnt from './containers/AktiCnt';
+import EmaPlatform from './components/EmaPlatform'
+import Election from './components/Election';
+import Structure from './components/Structure';
+import Pattern from './components/Pattern';
+import PublishingActivity from './components/PublishingActivity';
+import CongressCnt from './containers/CongressCnt';
 
 const routes = [
     {
@@ -50,9 +57,36 @@ const routes = [
     {
         path: userPath.contact,
         main: () => <div> <ContactCnt /> </div>
+    },
+    {
+        path: userPath.akti,
+        main: () => <div> <AktiCnt /> </div>
+    },
+    {
+        path: userPath.emaPlatform,
+        main: () => <div> <EmaPlatform /> </div>
+    },
+    {
+        path: userPath.election,
+        main: () => <div> <Election /> </div>
+    },
+    {
+        path: userPath.structure,
+        main: () => <div> <Structure /> </div>
+    },
+    {
+        path: userPath.pattern,
+        main: () => <div> <Pattern /> </div>
+    },
+    {
+        path: userPath.publishingActivity,
+        main: () => <div> <PublishingActivity /> </div>
+    },
+    {
+        path: userPath.congress,
+        main: () => <div> <CongressCnt /> </div>
     }
 ]
-
 
 class PageRouting extends React.Component {
     

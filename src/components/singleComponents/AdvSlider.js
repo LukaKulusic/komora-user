@@ -2,9 +2,9 @@ import React from 'react'
 
 export default class AdvSlider extends React.Component {
     
-    componentDidMount(){
-        console.log('did mount props', this.props.title);
-    }
+    // componentDidMount(){
+    //     console.log('did mount props', this.props.title);
+    // }
     render() {
         return (
             <div className="item">

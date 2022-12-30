@@ -15,7 +15,6 @@ export function* getDetails() {
     }
 }
 
-
 export function* homePageSaga() {
     yield takeEvery(homePageConstants.GETDETAILS_REQUEST, getDetails)
 }

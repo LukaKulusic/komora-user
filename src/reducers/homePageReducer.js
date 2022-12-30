@@ -1,7 +1,7 @@
 import { homePageConstants } from '../constants/homePage.constants'
 
 const initialState = {
-    details: ''
+    details: []
 }
 
 export default function homePageReducer(state = initialState, action) {

@@ -20,3 +20,24 @@ export function getCompanyDetails_failure(error) {
         payload: error
     }
 }
+
+export function sendMail_request(email) {
+    return {
+        type: companyDetailsCostants.SENDMAIL_REQUEST,
+        payload: email
+    }
+}
+
+export function sendMail_success(email) {
+    return {
+        type: companyDetailsCostants.SENDMAIL_SUCCESS,
+        payload: email
+    }
+}
+
+export function sendMail_failure(error) {
+    return {
+        type: companyDetailsCostants.SENDMAIL_FAILURE,
+        payload: error
+    }
+}

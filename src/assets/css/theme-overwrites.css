@@ -24,7 +24,52 @@
     padding-top: 20px
 }
 
+.newsForCat {
+  margin-top: -40px;
+  padding-bottom: 20px;
+}
 
+.marginIcon {
+  margin-top: -7px;
+}
+.p-Ema {
+  padding: 10px;
+  font-size: 16px;
+}
+.p-Ema-color {
+  color: rgb(239, 102, 103);
+}
+.li-Ema {
+  margin-left: 5%;
+}
+.buttom_Ema {
+  margin-bottom: 10px;
+  border: 0;
+}
+.btn-store {
+  color: #777777;
+  min-width: 254px;
+  padding: 12px 20px !important;
+  border-color: #dddddd !important;
+}
+
+.btn-store:focus, 
+.btn-store:hover {
+  color: #ffffff !important;
+  background-color: #168eea;
+  border-color: #168eea !important;
+}
+
+.btn-store .btn-label, 
+.btn-store .btn-caption {
+  display: block;
+  text-align: left;
+  line-height: 1;
+}
+
+.btn-store .btn-caption {
+  font-size: 24px;
+}
 .box {
   position: relative;
     border-radius: 3px;
@@ -38,8 +83,25 @@
 }
 
 .searchField {
-  border: 0.2px solid lightgray; 
-  margin-left: 5px;
+  width: 100%;
+  border-radius: 5px;
+  height: 38px;
+  padding-left: 5px;
+  border: 1px solid #CCCCCC;
+  color: hsl(0,0%,20%);
+}
+
+
+.searchField:hover {
+  border: 1px solid grey;
+  cursor: default;
+}
+
+.searchField:focus {
+  outline: none !important;
+  border: 2px solid #2684FF;
+  cursor: default;
+  color: hsl(0,0%,20%);
 }
 
 .searchContent {
@@ -85,4 +147,31 @@
   background-color: #ef662f;
   font-weight: bold;
   border: 1px solid #ef662f;
+}
+
+.cyron {
+  /* background-image:url(/public/img/gradient-final.png); */
+  background-color: rgb(123, 155, 176);
+  color: white;
+  text-align: center;
+  margin-bottom:  0xp;
+  font-size: 16px;
+  padding-top: 2px;
+  border-top: 2px solid rgb(243, 243, 243);
+}
+
+.cyronStyle {
+  margin-bottom:  0xp;
+}
+
+.election-row {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #dcdcdc;
+  margin: 0 0 20px 0;
+  padding: 0 0 10px 80px;
+}
+
+.showPages:hover {
+  cursor: pointer;
 }

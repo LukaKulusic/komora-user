@@ -4,7 +4,8 @@ const initialState = {
     news: [],
     noveltyDetails: [],
     newsForFooter: [],
-    popularNews: []
+    popularNews: [],
+    lastNewDetails: []
 }
 
 export default function newsReducer(state = initialState, action) {
@@ -95,6 +96,24 @@ export default function newsReducer(state = initialState, action) {
                 popularNews: action.payload
             }
         case newsConstants.GETPOPULARNEWS_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case newsConstants.GETLASTNEW_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                lastNewDetails: action.payload
+            }
+        case newsConstants.GETLASTNEW_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                lastNewDetails: action.payload
+            }
+        case newsConstants.GETLASTNEW_FAILURE:
             return {
                 ...state,
                 loading: false,

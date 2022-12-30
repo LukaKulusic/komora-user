@@ -7,5 +7,12 @@ export const userPath = {
     category: '/kategorija_vijesti',
     noveltyDetails: '/detaljnije',
     advertisment: '/oglasi',
-    members: '/clanovi'
+    members: '/clanovi',
+    akti: '/akti',
+    emaPlatform: '/emaPlatforma',
+    election: '/izbori',
+    structure: "/organi_komore",
+    pattern: "/obrasci",
+    publishingActivity: "/izdavacka_djelatnost",
+    congress: "/kongres"
 }

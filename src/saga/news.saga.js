@@ -1,6 +1,6 @@
 import { takeEvery, put, call} from 'redux-saga/effects'
-import { getNews_api, getNoveltyDetails_api, getNewsForCategory_api, getNewsForFooter_api, getPopularNews_api } from '../api/news.api'
-import { getNews_failure, getNews_success, getNoveltyDetails_failure, getNoveltyDetails_success, getNewsForCategory_failure, getNewsForCategory_success, getNewsForFooter_failure, getNewsForFooter_success, getPopularNews_failure, getPopularNews_success} from '../actions/news.actions'
+import { getNews_api, getNoveltyDetails_api, getNewsForCategory_api, getNewsForFooter_api, getPopularNews_api, getLastId_api, getLastNew_api } from '../api/news.api'
+import { getNews_failure, getNews_success, getNoveltyDetails_failure, getNoveltyDetails_success, getNewsForCategory_failure, getNewsForCategory_success, getNewsForFooter_failure, getNewsForFooter_success, getPopularNews_failure, getPopularNews_success, getLastNew_failure, getLastNew_success} from '../actions/news.actions'
 import { newsConstants } from '../constants/news.constants';
 
 export function* getNews() {
@@ -64,10 +64,23 @@ export function* getPopularNews() {
     }
 }
 
+export function* getLastNew() {
+    const response = yield call(getLastNew_api)
+    if(!response || !response.data) {
+        return yield put(getLastNew_failure('Internal server error for loading last id for news'))
+    }
+    if(response.status === 200) {
+        return yield put(getLastNew_success(response.data))
+    } else {
+        return yield put(getLastNew_failure('Error for loading last id for news'))
+    }
+}
+
 export function* newsSaga() {
     yield takeEvery(newsConstants.GETNEWS_REQUEST, getNews)
     yield takeEvery(newsConstants.GETNOVELTYDETAILS_REQUEST, getNoveltyDetails)
     yield takeEvery(newsConstants.GETNEWSFORCATEGORY_REQUEST, getNewsForCateogry)
     yield takeEvery(newsConstants.GETNEWSFORFOOTER_REQUEST, getNewsForFooter)
     yield takeEvery(newsConstants.GETPOPULARNEWS_REQUEST, getPopularNews)
+    yield takeEvery(newsConstants.GETLASTNEW_REQUEST, getLastNew)
 }

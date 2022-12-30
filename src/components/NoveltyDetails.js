@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import Novelty from './singleComponents/Novelty';
 import PageHeader from './singleComponents/PageHeader';
+import NoveltyCnt from '../containers/NoveltyCnt';
 
 class NoveltyDetails extends React.Component {
 
@@ -13,13 +13,23 @@ class NoveltyDetails extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getDetails(parseInt(this.props.novelty.id));
+        // this.props.getDetails(parseInt(this.props.novelty.id));
+        this.props.getDetails(localStorage.getItem('novelty'));
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            details: nextProps.details
-        })
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({
+    //         details: nextProps.details
+    //     })
+    // }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        if(nextProps.details !== prevProps.details) {
+            return {
+                details: nextProps.details
+            }
+        }
+        return null
     }
 
     render() {
@@ -27,20 +37,8 @@ class NoveltyDetails extends React.Component {
             <div>
                 <PageHeader />
                 <div className="col-md-6 col-sm-6 col-sm-offset-3 pageDetailsPadding">
-                {
-                    // this.state.details.map(item => {
-                    //     return <Novelty 
-                    //             key={item.id}
-                    //             id={item.id}
-                    //             title={item.title}
-                    //             date={item.date}
-                    //             posted_by={item.posted_by}
-                    //             category_name={item.category_name}
-                    //             full_text={item.full_text}
-                    //             detailsPage={true}
-                    //         />
-                    // })
-                    <Novelty 
+                {   
+                    <NoveltyCnt 
                         key={this.state.details.id}
                         id={this.state.details.id}
                         title={this.state.details.title}

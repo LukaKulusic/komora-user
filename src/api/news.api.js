@@ -1,21 +1,29 @@
 import axios from 'axios'
 
+// var apiUrl = window.location.href.indexOf('stomkomcg.me') >= 0 ? 'https://laravel.stomkomcg.me' : 'http://api.zk.test';
+
+var apiUrl = "https://laravel.stomkomcg.me"
+
 export function getNews_api(){
-    return axios.get('http://api.zk.test/news')
+    return axios.get(apiUrl + '/news')
 }
 
 export function getNoveltyDetails_api(id) {
-    return axios.get('http://api.zk.test/news/'+id)
+    return axios.get(apiUrl + '/news/'+id)
 }
 
 export function getNewsForCategory_api(action) {
-    return axios.get('http://api.zk.test/newsForCategory/'+action)
+    return axios.get(apiUrl + '/newsForCategory/'+action)
 }
 
 export function getNewsForFooter_api() {
-    return axios.get('http://api.zk.test/newsForFooter')
+    return axios.get(apiUrl + '/newsForFooter')
 }
 
 export function getPopularNews_api() {
-    return axios.get('http://api.zk.test/popularNews')
+    return axios.get(apiUrl + '/popularNews')
+}
+
+export function getLastNew_api() {
+    return axios.get(apiUrl+ '/lastNew');
 }

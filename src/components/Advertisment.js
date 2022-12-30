@@ -25,17 +25,32 @@ class Advertisment extends React.Component {
         this.setup()
     }
 
-    componentWillReceiveProps(nextProps){
-        let pagAdvs = []
-        if(nextProps.advertisments.length > 0) {
-            pagAdvs = nextProps.advertisments.slice(this.state.activePage*this.state.newsPerPage - this.state.newsPerPage,
-                this.state.activePage*this.state.newsPerPage, [])
+    // componentWillReceiveProps(nextProps){
+    //     let pagAdvs = []
+    //     if(nextProps.advertisments.length > 0) {
+    //         pagAdvs = nextProps.advertisments.slice(this.state.activePage*this.state.newsPerPage - this.state.newsPerPage,
+    //             this.state.activePage*this.state.newsPerPage, [])
+    //     }
+    //     this.setState({
+    //         advertisments: nextProps.advertisments,
+    //         data: pagAdvs,
+    //         totalAdvs: nextProps.advertisments.length
+    //     })
+    // }
+
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        let _pagAdvs = []
+        if(nextProps.advertisments !== prevProps.advertisments) {
+            _pagAdvs = nextProps.advertisments.slice(prevProps.activePage*prevProps.newsPerPage - prevProps.newsPerPage,
+                prevProps.activePage*prevProps.newsPerPage, [])
+                return {
+                    advertisments: nextProps.advertisments,
+                    data: _pagAdvs,
+                    totalAdvs: nextProps.advertisments.length
+                }
         }
-        this.setState({
-            advertisments: nextProps.advertisments,
-            data: pagAdvs,
-            totalAdvs: nextProps.advertisments.length
-        })
+        return null
     }
 
     setActivePage = (currentPage) => {

@@ -1,42 +1,55 @@
 import axios from 'axios'
 
+// var apiUrl = window.location.href.indexOf('stomkomcg.me') >= 0 ? 'https://laravel.stomkomcg.me' : 'http://api.zk.test';
+
+var apiUrl = "http://127.0.0.1:8000/"
+
+var config = {
+    // + localStorage.getItem('token')
+    headers: {'Authorization': "bearer " }
+};
+
 export function getMembers_api(){
-    return axios.get('http://api.zk.test/member')
-    // return axios.get('http://www.mocky.io/v2/5d480fbd3300009287a3eceb')
+    return axios.get(apiUrl + '/member')
 }
 
 export function getBoardMembers_api() {
-    return axios.get('http://api.zk.test/boardMember')
-    // return axios.get('http://www.mocky.io/v2/5d415a2b3100004d005392ba')
+    return axios.get(apiUrl + '/boardMember')
 }
 
 export function getBiography_api(id) {
-    return axios.get('http://api.zk.test/biography/'+id);
-    // return axios.get('http://www.mocky.io/v2/5d402caa330000911c9d2a2e')
+    return axios.get(apiUrl + '/biography/'+id);
 }
 
 export function getMembersPg_api () {
-    return axios.get('http://api.zk.test/parliamentPg')
-    // return axios.get('http://www.mocky.io/v2/5d4171603100004d005393cd')
+    return axios.get(apiUrl + '/parliamentPg')
 }
 
 export function getMembersNk_api () {
-    return axios.get('http://api.zk.test/parliamentNk')
-    // return axios.get('http://www.mocky.io/v2/5d41741d3100007e005393ee')
+    return axios.get(apiUrl + '/parliamentNk')
 }
 
 export function getMembersCt_api () {
-    return axios.get('http://api.zk.test/parliamentCt')
-    // return axios.get('http://www.mocky.io/v2/5d417f83310000570053944c')
+    return axios.get(apiUrl + '/parliamentCt')
 }
 
 export function getMembersSouth_api () {
-    return axios.get('http://api.zk.test/parliamentSouth')
-    // return axios.get('http://www.mocky.io/v2/5d417950310000530053941a')
+    return axios.get(apiUrl + '/parliamentSouth')
 }
 
 export function getMembersNorth_api () {
-    return axios.get('http://api.zk.test/parliamentNorth')
-    // return axios.get('http://www.mocky.io/v2/5d417c333100007bc253942d')
+    return axios.get(apiUrl + '/parliamentNorth')
+}
+
+export function getCities_api () {
+    return axios.get(apiUrl + '/cities')
+}
+
+export function addParticipans_api (details) {
+    return axios.post(apiUrl + '/congress', details)
+}
+
+export function getMembersPerCity_api (details) {
+    return axios.get(apiUrl + '/searchMembersPerCity/'+details)
 }
 
