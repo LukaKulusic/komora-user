@@ -42,7 +42,6 @@ export default function memberReducer(state = initialState, action) {
                 loading: true
             }
         case memberConstant.SEARCH_PER_CITY_SUCCESS:
-            console.log('payload = ', action.payload)
             return {
                 ...state,
                 loading: false,

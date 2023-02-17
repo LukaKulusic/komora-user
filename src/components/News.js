@@ -119,7 +119,7 @@ class News extends React.Component {
                                             }
                                         </ul>
                                     </div>
-                                    <div className="widget">
+                                    {/* <div className="widget">
                                         <h5 className="widget-head">Popularni članci</h5>
                                         <div className="recent-widget">
                                             {
@@ -134,7 +134,7 @@ class News extends React.Component {
                                                 : ""
                                             }
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="widget">
                                         <h5 className="widget-head">Pratite nas</h5>
                                         <a href="https://www.facebook.com/MNEdentalchamber/" className="btn btn-facebook btn-icon btn-block">Facebook <i className="fa fa-facebook"></i></a>
@@ -155,6 +155,7 @@ class News extends React.Component {
                                             posted_by={item.posted_by}
                                             category_name={item.category_name}
                                             content={item.content}
+                                            imgTitle={item.imgTitle}
                                         />
                                     })
                                     : ""

@@ -16,6 +16,7 @@ export function* getDetails() {
 }
 export function* sendEmail(action) {
     const response = yield call(sendEmail_api, action.payload)
+    console.log('action.payload = ', action.payload)
     if(!response || !response.data) {
         return yield put(sendMail_failure('Internal server error for sending email'))
     }

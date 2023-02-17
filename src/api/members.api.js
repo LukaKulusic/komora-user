@@ -2,7 +2,8 @@ import axios from 'axios'
 
 // var apiUrl = window.location.href.indexOf('stomkomcg.me') >= 0 ? 'https://laravel.stomkomcg.me' : 'http://api.zk.test';
 
-var apiUrl = "http://127.0.0.1:8000/"
+// var apiUrl = "http://127.0.0.1:8000/"
+var apiUrl = 'https://laravel.stomkomcg.me';
 
 var config = {
     // + localStorage.getItem('token')
@@ -46,7 +47,22 @@ export function getCities_api () {
 }
 
 export function addParticipans_api (details) {
-    return axios.post(apiUrl + '/congress', details)
+    
+    const data = new FormData()
+    data.append('name', details.name)
+    data.append('vocation', details.vocation)
+    data.append('company', details.company)
+    data.append('address', details.address)
+    data.append('country', details.country)
+    data.append('phone', details.phone)
+    data.append('email', details.email)
+    data.append('images', details.images)
+
+    return axios.post(apiUrl + '/congress', data, {
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        }
+    })
 }
 
 export function getMembersPerCity_api (details) {

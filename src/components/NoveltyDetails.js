@@ -46,8 +46,15 @@ class NoveltyDetails extends React.Component {
                         posted_by={this.state.details.posted_by}
                         category_name={this.state.details.category_name}
                         full_text={this.state.details.full_text}
+                        imgTitle={this.state.details.imgTitle}
                         detailsPage={true}
                     />
+                }
+                {
+                    this.state.details.file?.length > 5 ?
+                    // <p >Vijest mozete pogledati <a href={this.state.details.file}>ovdje</a></p>
+                    <p style={{ paddingLeft: '20px' }}>Vijest možete pogledati <a href={`https://laravel.stomkomcg.me/${this.state.details.file}`} target="_blank">ovdje</a></p>
+                    : ""
                 }
                 </div>
             </div>

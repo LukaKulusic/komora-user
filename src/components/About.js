@@ -315,12 +315,12 @@ class About extends React.Component {
                             </div>
 
                             <div style={{marginBottom:'25px'}}>
-                                <p style={{fontWeight:'bold'}}>Branioc Stomatološke komore Crne Gore:</p>
+                                <p style={{fontWeight:'bold'}}>Branilac Stomatološke komore Crne Gore:</p>
                                 <p>Dr Radovan Vušović.</p>
                             </div>
 
                             <div style={{marginBottom:'25px'}}>
-                                <p style={{fontWeight:'bold'}}>Tužioc Stomatološke komore Crne Gore:</p>
+                                <p style={{fontWeight:'bold'}}>Tužilac Stomatološke komore Crne Gore:</p>
                                 <p>Dr Danijela Ćaćić.</p>
                             </div>
 

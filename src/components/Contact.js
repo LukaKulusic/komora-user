@@ -129,6 +129,7 @@ class Contact extends React.Component {
 									<p>
 									{ this.state.details.email }
 									</p>
+									<p>stomatoloskakomoracg@gmail.com</p>
 								</li>
 							</ul>
 						</div>

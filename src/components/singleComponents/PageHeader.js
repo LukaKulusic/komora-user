@@ -8,7 +8,7 @@ export default function PageHeader () {
                 <div className="inner-head">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-12 pageHeader">
+                            <div className="col-md-12 col-sm-12 pageHeader">
                                 {/* <h4>Template <span>pages</span></h4>
                                 <ol className="breadcrumb">
                                     <li><a href="pocetna">Početna</a></li>

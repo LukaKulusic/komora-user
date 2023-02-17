@@ -319,10 +319,12 @@ class Members extends React.Component {
                 "label": "Žabljak"
             }
         ]
-        
+
         return (
             <div>
-                <PageHeader />
+                <div style={{width: '100%'}}>
+                    <PageHeader/>
+                </div>
                 <div className="container">
                     <div className="row">
                         <div
@@ -351,7 +353,8 @@ class Members extends React.Component {
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-12 box">
+                        {/* box */}
+                        <div className="col-sm-12">
                             <table id="example" className="table table-hover">
                                 <thead>
                                     <tr>

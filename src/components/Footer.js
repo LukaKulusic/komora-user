@@ -71,7 +71,7 @@ export default class Footer extends React.Component {
                                             <p style={{fontSize:'14px'}}><a href="https://www.gov.me/cyr/mzd" target="_blank" style={{color: 'black'}}>Ministarstvo zdravlja</a></p>
                                         </li>
                                         <li>
-                                            <p style={{fontSize:'14px'}}><a href="https://fzocg.me" target="_blank" style={{color: 'black'}}>Font za zdravstveno osiguranje Crne Gore</a></p>
+                                            <p style={{fontSize:'14px'}}><a href="https://fzocg.me" target="_blank" style={{color: 'black'}}>Fond za zdravstveno osiguranje Crne Gore</a></p>
                                         </li>
                                     </ul>
                                 </div>
@@ -84,6 +84,7 @@ export default class Footer extends React.Component {
                                         <p>Tel1: {this.state.details.phone1 || ""} </p>
                                         <p>Tel2: {this.state.details.phone2 || ""} </p>
                                         <p>E-mail: {this.state.details.email || ""}</p>
+                                        <p>E-mail: stomatoloskakomoracg@gmail.com</p>
                                         <p>Radno vrijeme: {this.state.details.work_time || ""} </p>
                                         <p>Br.žiro računa: { this.state.details.bank_account || ""} </p>
                                     </div>
